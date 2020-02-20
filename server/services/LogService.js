@@ -1,9 +1,12 @@
 import mongoose from "mongoose";
-import Value from "../models/Value";
+import Value from "../models/Log";
 
-const _repository = mongoose.model("Value", Value);
+const _repository = mongoose.model("Log", Value);
 
-class ValueService {
+class LogService {
+  async getLogsForShipId(ship) {
+    return await _repository.find({ ship })
+  }
   async getAll() {
     return await _repository.find({});
   }
@@ -21,5 +24,5 @@ class ValueService {
   }
 }
 
-const valueService = new ValueService();
-export default valueService;
+const logService = new LogService();
+export default logService;

@@ -18,7 +18,7 @@ server.use(express.static(__dirname + "/../client/dist"));
 //NOTE Allows requests from the port 8080, add additional addresses as needed
 var whitelist = ["http://localhost:8080"];
 var corsOptions = {
-  origin: function(origin, callback) {
+  origin: function (origin, callback) {
     var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
     callback(null, originIsWhitelisted);
   },
@@ -36,9 +36,16 @@ server.use(bp.json());
 
 //NOTE we have to import access to our controllers
 import ValuesController from "./controllers/ValuesController";
+import LogsController from "./controllers/LogsController";
+import ShipsController from "./controllers/ShipsController";
+import CommentsController from "./controllers/CommentsController";
 
 //NOTE remember the forward slash at the start of your path!
 server.use("/api/values", new ValuesController().router);
+server.use("/api/ships", new ShipsController().router);
+server.use("/api/logs", new LogsController().router);
+server.use("/api/comments", new CommentsController().router);
+
 
 //NOTE Everything below this line always stays the same
 

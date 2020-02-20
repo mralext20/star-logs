@@ -1,7 +1,7 @@
 import express from "express";
-import valueService from "../services/ValueService";
+import valueService from "../services/CommentService";
 
-export default class ValueController {
+export default class CommentsController {
   constructor() {
     this.router = express
       .Router()

@@ -1,3 +1,3 @@
 require('dotenv').config()
 require = require('esm')(module)
-module.exports = require('./server/main')1
+module.exports = require('./server/main')
